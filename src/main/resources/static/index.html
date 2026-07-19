@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A clean monthly cost planner powered by Spring Boot.">
+    <title>Monthly Cost Planner</title>
+    <link rel="icon" href="./favicon.svg">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<main>
+    <header class="topbar">
+        <div class="brand"><span class="brandmark">M</span><span>Monthly Cost Planner</span></div>
+        <div class="month-switcher" aria-label="Selected month">
+            <button id="previousMonth" aria-label="Previous month">‹</button>
+            <span><small>Planning for</small><b id="monthLabel">July 2026</b></span>
+            <button id="nextMonth" aria-label="Next month">›</button>
+        </div>
+        <div class="avatar" aria-label="Personal planner">P</div>
+    </header>
+
+    <div class="shell">
+        <section class="intro">
+            <div>
+                <p class="eyebrow">PERSONAL MONTHLY OVERVIEW</p>
+                <h1>Your money, clearly mapped.</h1>
+                <p>Update any amount and your monthly picture recalculates instantly.</p>
+            </div>
+            <span class="saved"><i></i><span id="storageLabel">Connecting to Spring Boot…</span></span>
+        </section>
+
+        <section class="stats" aria-label="Monthly summary">
+            <article class="stat stat-primary">
+                <div>
+                    <span>MONTHLY INCOME</span>
+                    <button class="value-button" id="editIncome">৳85,000 <b>✎</b></button>
+                    <small id="incomeCaption">Total income for July 2026</small>
+                </div>
+                <span class="stat-icon">▰</span>
+            </article>
+            <article class="stat">
+                <div><span>TOTAL EXPENSES</span><strong id="totalExpenses">৳59,300</strong><small id="expensePercent">69.8% of income</small></div>
+                <span class="stat-icon neutral">◔</span>
+            </article>
+            <article class="stat">
+                <div><span>TOTAL REMAINING</span><strong id="remaining" class="positive">৳25,700</strong><small id="availablePercent">30.2% available</small></div>
+                <span class="stat-icon success">↗</span>
+            </article>
+        </section>
+
+        <section class="content-grid">
+            <article class="card expense-card">
+                <div class="card-head"><div><h2>Expense categories</h2><p>Click the pencil to update an amount.</p></div><span id="categoryCount">7 categories</span></div>
+                <div class="table-head"><span>CATEGORY</span><span>AMOUNT</span><span>% OF INCOME</span><span>ACTION</span></div>
+                <div class="rows" id="expenseRows"></div>
+                <div class="table-total"><span>Total</span><strong id="tableTotal">৳59,300</strong><b id="tablePercent">69.8%</b><span></span></div>
+            </article>
+
+            <aside class="card overview">
+                <div class="card-head"><div><h2>Spending overview</h2><p>Where your money goes.</p></div></div>
+                <div class="donut" id="donut"><div><strong id="donutTotal">৳59,300</strong><span>Total expenses</span></div></div>
+                <div class="legend" id="legend"></div>
+                <button class="add-button" id="addExpense">＋ Add expense</button>
+            </aside>
+        </section>
+    </div>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div id="modalRoot"></div>
+<script src="./app.js" defer></script>
+</body>
+</html>
