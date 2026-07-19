@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: monthly-planner
+    runtime: docker
+    plan: free
+    healthCheckPath: /actuator/health
+    envVars:
+      - key: DATA_DIR
+        value: /tmp/monthly-planner-data
